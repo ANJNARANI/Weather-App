@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- header for weather forecaste app -->
+    <header class="border border-[#03030368] ">
+        <nav class="w-7xl mx-auto flex justify-between items-center my-7 px-[30px]">
+            <h1 class="text-4xl font-bold select-none items-center flex gap-1 text-blue-900 tracking-tight">Weather <i
+                    class="fa-regular fa-cloud text-amber-400"></i></h1>
+            <ul class="lg:flex md:flex hidden gap-5 text-xl transition-all duration-150 ease-in">
+                <li class="hover:text-blue-700"><a href="#cityInput">Search</a></li>
+                <li class="hover:text-blue-700"><a href="#">Day Forecast</a></li>
+                <li class="hover:text-blue-700"><a href="#forecast">Prediction</a></li>
+            </ul>
+
+            <div class="xsm:flex sm:flex lg:hidden flex ">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+
+        </nav>
+
+    </header>
+    <div class="flex  lg:flex-row flex-col">
+        <!-- main section left search right search render section-->
+        <div class="lg:w-[35%] w-[80%] px-3 lg:h-screen mx-auto my-8">
+            <h2 class="text-2xl font-bold">Search Weather</h2>
+            <p class="text-bold text-[16px] text-[#000000ac]">Enter a city name to check the latest weather updates.</p>
+            <form action="" class="relative">
+                <input id="searchInput" type="text" placeholder="Search City....."
+                    class="w-full border px-2 py-2 mt-3 rounded-md  focus:outline-blue-600">
+
+                <button id="searchbtn"
+                    class="w-full border bg-blue-700 my-2 py-2 text-white hover:bg-transparent hover:text-black hover:uppercase transition-all duration-200ms rounded-md">Search</button>
+
+                <!-- select celsius and feranight -->
+                <select name="" id="selectUnit" class="absolute top-5 right-5">
+                    <option value=""></option>
+                    <option value="metric">Celsius (°C)</option>
+                    <option value="imperial">Fahrenheit (°F)</option>
+                </select>
+                <!-- line break -->
+                <div class="flex flex-row gap-3 items-center mt-2">
+                    <div class="w-full h-[2px] bg-[#000000e9]"></div>
+                    <p class="text-[18px] font-bold ">or</p>
+                    <div class="w-full h-[2px] bg-[#000000e9]"></div>
+
+                </div>
+            </form>
+
+            <!-- grant access button -->
+            <h2 class="text-2xl font-bold pt-8 tracking-tight">Current Location Weather</h2>
+            <p class="text-[16px] text-[#0000009e]">Enable location access to fetch real-time weather details for
+                your exact
+                position.</p>
+            <button id="grantAccess"
+                class="w-full border mt-5 py-1.5 rounded-md bg-blue-700 text-white uppercase hover:bg-white hover:text-black transition-all duration-300 ease-in  ">GRANT
+                ACCESS</button>
+
+
+
+
+
+        </div>
+        <!-- right -->
+        <!-- main section -->
+        <div class="px-7 lg:w-[60%] w-full">
+
+            <h2 class="font-bold text-2xl">What’s the Weather Today?</h2>
+            <p>Check how the sky looks right now—sunshine, clouds, or rain—so
+                you know what to expect.</p>
+            <div class=" my-6 p-6 bg-gradient-to-tr from-white to-sky-200 shadow-[0_1px_20px_rgb(0,0,0,0.12)]">
+                <div class="flex justify-between mb-4">
+                    <div>
+                        <p class="font-bold text-4xl" id="datatemp"></p>
+                        <div class="flex flex-row items-center gap-2">
+                            <p id="weatherDesc"></p><i class="fa-solid fa-cloud-moon-rain gap-2"></i>
+                        </div>
+                        <div class="flex flex-row items-center gap-2"><i class="fa-solid fa-calendar"></i>
+                            <p id="dateText"></p>
+                        </div>
+                    </div>
+                    <div><img src="weather img.png" alt="" width="200" height="200" style="margin-top:-20px;"></div>
+                </div>
+                <div><i class="fa-solid fa-location-dot text-green-700"></i>
+                    <p id="cityLoction">
+                    </p>
+                </div>
+
+                <div class="flex justify-between mt-6">
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-temperature-low text-[20px]"></i>
+                        <div>
+                            <p>Feels like</p>
+                            <p id="feelsLike"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-droplet text-[20px] text-blue-700"></i>
+                        <div>
+                            <p>Humidity</p>
+                            <p id="humidity"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-wind text-[20px]"></i>
+                        <div>
+                            <p>wind speed</p>
+                            <p id="windSpeed"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- card session -->
+            <section class="mt-5 w-full">
+                <h2 class="font-bold text-2xl">5-Days Forecast</h2>
+                <p>Get a quick glance at the weather for the upcoming days — temperature, sky conditions, and more at a
+                    glance.
+                </p>
+               <div id="ForecastContainer" class="mt-6 grid lg:grid-cols-5 sm:grid-cols-2 grid-cols-1 gap-4 w-full"></div>
+
+ 
+            </section>
+            
+             
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+
+</html>
